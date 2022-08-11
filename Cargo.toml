@@ -6,7 +6,7 @@ edition = "2021"
 description = "This crate provides an easy way to import a plain text configuration file into a machine readable structure (HashMap)."
 readme = "README.md"
 repository = "https://github.com/rlado/cfg_mgr"
-license = "GPLv3"
+license = "GPL-3.0-only"
 
 
 [dependencies]
