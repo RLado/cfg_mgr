@@ -5,9 +5,8 @@
  
  It's use is very simple, just call load(path :&str) on a properly formatted 
  config file and all it's data will be imported into a HashMap containing a 
- String key and a value in the form of the CfgData structure (defined within 
- this crate). The user will require prior knowledge whether to access the 
- numeric or string field. 
+ String key and a value in the form of the CfgData structure. The user 
+ will require prior knowledge whether to access the numeric or string field. 
  
  By default all parseable numerical values will be parsed into the numeric 
  field as f64. Multiple numerical entries must be separated by ','. If any of 
@@ -17,16 +16,18 @@
  The proper format of a configuration file is as such:
  --------------------
  file: [config.cfg]
+ 
  --------------------
  
- ```
- # This is a comment
+ ```text
+ #This is a comment
  foo = 3.1415
  bar = 1e-3 # comment
  foobar = 3.1415, 1e-3 # multiple arguments are allowed
  
  path = some/path/example.txt # this can't be parsed as f64 so it's a string
  ```
+ 
  --------------------
  
  
@@ -55,4 +56,13 @@
          println!(";{}", config.get(key).unwrap().string);
      }
  }
+ ```
+ 
+ Result:
+ 
+ ```text
+ path: ;some/path/example.txt
+ foo: 3.1415, ;
+ foobar: 3.1415, 0.001, ;
+ bar: 0.001, ;
  ```

@@ -16,19 +16,22 @@
 //! The proper format of a configuration file is as such:
 //! --------------------
 //! file: [config.cfg]
+//! 
 //! --------------------
 //! 
-//! # This is a comment
+//! ```text
+//! #This is a comment
 //! foo = 3.1415
 //! bar = 1e-3 # comment
 //! foobar = 3.1415, 1e-3 # multiple arguments are allowed
 //! 
 //! path = some/path/example.txt # this can't be parsed as f64 so it's a string
+//! ```
 //! 
 //! --------------------
 //! 
 //! 
-//! [Examples]
+//! ## Examples
 //! 
 //! The following example loads a file named "config.cfg" and prints out it's 
 //! parsed contents.
@@ -55,6 +58,14 @@
 //! }
 //! ```
 //! 
+//! Result:
+//! 
+//! ```text
+//! path: ;some/path/example.txt
+//! foo: 3.1415, ;
+//! foobar: 3.1415, 0.001, ;
+//! bar: 0.001, ;
+//! ```
 
 
 use std::collections::HashMap;
